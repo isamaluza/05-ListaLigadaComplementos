@@ -125,18 +125,25 @@ void inserirElemento()
 	cin >> novo->valor;
 	novo->prox = NULL;
 
-	if (primeiro == NULL)
+	if(primeiro == NULL) 
 	{
+		primeiro = novo;
+	}
+	else if (novo->valor < primeiro->valor)
+	{
+		novo->prox = primeiro;
 		primeiro = novo;
 	}
 	else
 	{
 		// procura o final da lista
 		NO* aux = primeiro;
-		while (aux->prox != NULL) {
+		while (aux->prox!=NULL && novo->valor<aux->prox->valor) {
 			aux = aux->prox;
 		}
+		novo->prox = aux->prox;
 		aux->prox = novo;
+
 	}
 }
 
